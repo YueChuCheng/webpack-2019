@@ -20,9 +20,21 @@ module.exports = {
             }
         },
         {
-            test: /\.css$/,
             
-            use: ['style-loader', 'postcss-loader']
+            test: /\.css$/,
+            use: ExtractTextPlugin.extract({
+                use: [{
+                   loader: 'css-loader',
+                   options: {
+                      url: false
+                   }
+                }, {
+                   loader: 'postcss-loader'
+                }]
+             })
+            
+            
+            
             /*test: /\.css$/,
             exclude: /node_modules/,
             use: [
