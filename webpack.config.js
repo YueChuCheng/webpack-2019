@@ -33,25 +33,6 @@ module.exports = {
                 }]
              })
             
-            
-            
-            /*test: /\.css$/,
-            exclude: /node_modules/,
-            use: [
-              {
-                loader: 'style-loader',
-              },
-              {
-                loader: 'css-loader',
-                options: {
-                  importLoaders: 1,
-                }
-              },
-              {
-                loader: 'postcss-loader'
-              }
-            ]*/
-            
          },
         {
             test:/\.(jpe?g|png|gif|svg)$/,
@@ -65,7 +46,16 @@ module.exports = {
                 'image-webpack-loader'
             ]
         },
-        
+        {
+            test: /\.(png|woff|woff2|eot|ttf|svg)$/,
+            use:{
+                loader:'file-loader',
+                options: {
+                    outputPath: 'css/fonts',
+                    name: '[name].[ext]',
+                },
+            }
+        }
     ]
     },
     plugins:[
