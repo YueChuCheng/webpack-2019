@@ -20,11 +20,38 @@ module.exports = {
             }
         },
         {
+            
+            test: /\.css$/,
             use: ExtractTextPlugin.extract({
-               use: 'css-loader'
-            }),
-            // use: ['style-loader', 'css-loader'],
-            test: /\.css$/
+                use: [{
+                   loader: 'css-loader',
+                   options: {
+                      url: false
+                   }
+                }, {
+                   loader: 'postcss-loader'
+                }]
+             })
+            
+            
+            
+            /*test: /\.css$/,
+            exclude: /node_modules/,
+            use: [
+              {
+                loader: 'style-loader',
+              },
+              {
+                loader: 'css-loader',
+                options: {
+                  importLoaders: 1,
+                }
+              },
+              {
+                loader: 'postcss-loader'
+              }
+            ]*/
+            
          },
         {
             test:/\.(jpe?g|png|gif|svg)$/,
